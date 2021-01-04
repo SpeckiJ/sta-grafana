@@ -1,0 +1,38 @@
+{
+  "type": "datasource",
+  "name": "sta-grafana",
+  "id": "n52-sta-grafana",
+  "metrics": true,
+  "info": {
+    "description": "Datasource for connecting to OGC STA v1.1",
+    "author": {
+      "name": "Jan Speckamp <j.speckamp@52north.org>",
+      "url": "www.52north.org"
+    },
+    "keywords": [
+      "ogc",
+      "sta"
+    ],
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "links": [
+      {
+        "name": "Website",
+        "url": "https://github.com/grafana/simple-datasource"
+      },
+      {
+        "name": "License",
+        "url": "https://github.com/grafana/simple-datasource/blob/master/LICENSE"
+      }
+    ],
+    "screenshots": [],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+  "dependencies": {
+    "grafanaVersion": "6.5.x",
+    "plugins": []
+  }
+}
