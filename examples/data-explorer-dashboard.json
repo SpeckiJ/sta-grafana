@@ -1,0 +1,315 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "id": 2,
+    "links": [],
+    "panels": [
+      {
+        "alignNumbersToRightEnabled": true,
+        "columnAliases": [
+          {
+            "alias": "DataViewer",
+            "name": "id"
+          }
+        ],
+        "columnFiltersEnabled": false,
+        "columnWidthHints": [],
+        "columns": [],
+        "compactRowsEnabled": false,
+        "datasource": null,
+        "datatablePagingType": "simple_numbers",
+        "datatableTheme": "basic_theme",
+        "emptyData": false,
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": null,
+              "filterable": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "id"
+              },
+              "properties": [
+                {
+                  "id": "links",
+                  "value": [
+                    {
+                      "targetBlank": true,
+                      "title": "",
+                      "url": "http://localhost:3000/d/bHemy2aMk/datastream?orgId=1&var-datastreamId=${__data.fields.id}&from=${__data.fields.minPhenomenonTime}&to=${__data.fields.maxPhenomenonTime}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "fontSize": "100%",
+        "gridPos": {
+          "h": 10,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "hoverEnabled": true,
+        "id": 2,
+        "infoEnabled": true,
+        "lengthChangeEnabled": true,
+        "orderColumnEnabled": true,
+        "pagingTypes": [
+          {
+            "text": "Page number buttons only",
+            "value": "numbers"
+          },
+          {
+            "text": "'Previous' and 'Next' buttons only",
+            "value": "simple"
+          },
+          {
+            "text": "'Previous' and 'Next' buttons, plus page numbers",
+            "value": "simple_numbers"
+          },
+          {
+            "text": "'First', 'Previous', 'Next' and 'Last' buttons",
+            "value": "full"
+          },
+          {
+            "text": "'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers",
+            "value": "full_numbers"
+          },
+          {
+            "text": "'First' and 'Last' buttons, plus page numbers",
+            "value": "first_last_numbers"
+          }
+        ],
+        "panelHeight": null,
+        "pluginVersion": "7.3.6",
+        "rowNumbersEnabled": true,
+        "rowsPerPage": 5,
+        "scroll": false,
+        "scrollHeight": "default",
+        "searchEnabled": true,
+        "searchHighlightingEnabled": true,
+        "showCellBorders": false,
+        "showHeader": true,
+        "showRowBorders": true,
+        "sort": {
+          "col": 0,
+          "desc": true
+        },
+        "sortByColumns": [
+          {
+            "columnData": 0,
+            "sortMethod": "desc"
+          }
+        ],
+        "sortByColumnsData": [
+          [
+            1,
+            "asc"
+          ]
+        ],
+        "stripedRowsEnabled": true,
+        "styles": [
+          {
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "maxPhenomenonTime",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "minPhenomenonTime",
+            "splitPattern": "/ /",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "observedArea",
+            "splitPattern": "/ /",
+            "thresholds": [],
+            "type": "string",
+            "unit": "short"
+          },
+          {
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "column": "id",
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "link": true,
+            "mappingType": 1,
+            "pattern": "id",
+            "splitPattern": "//",
+            "thresholds": [],
+            "type": "string",
+            "unit": "short",
+            "url": "/d/bHemy2aMk/datastream?orgId=1&var-datastreamId=$__cell_0&from=$__cell_3&to=$__cell_4"
+          }
+        ],
+        "targets": [
+          {
+            "entity": 1,
+            "entityString": "Datastream",
+            "hide": false,
+            "refId": "A"
+          }
+        ],
+        "themeOptions": {
+          "dark": "./styles/dark.scss",
+          "light": "./styles/light.scss"
+        },
+        "themes": [
+          {
+            "disabled": false,
+            "text": "Basic",
+            "value": "basic_theme"
+          },
+          {
+            "disabled": true,
+            "text": "Bootstrap",
+            "value": "bootstrap_theme"
+          },
+          {
+            "disabled": true,
+            "text": "Foundation",
+            "value": "foundation_theme"
+          },
+          {
+            "disabled": true,
+            "text": "ThemeRoller",
+            "value": "themeroller_theme"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Datastreams",
+        "transform": "table",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "maxPhenomenonTime": false,
+                "minPhenomenonTime": false
+              },
+              "indexByName": {},
+              "renameByName": {}
+            }
+          }
+        ],
+        "type": "briangann-datatable-panel"
+      },
+      {
+        "datasource": null,
+        "fieldConfig": {
+          "defaults": {
+            "custom": {}
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 10
+        },
+        "id": 4,
+        "options": {
+          "content": "{{observedArea}}"
+        },
+        "pluginVersion": "7.3.6",
+        "targets": [
+          {
+            "entity": 1,
+            "entityString": "Datastream",
+            "hide": false,
+            "refId": "A"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Panel Title",
+        "type": "marcusolsson-dynamictext-panel"
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 26,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "2021-01-06T01:31:47.928Z",
+      "to": "2021-01-07T01:31:47.928Z"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Data Discovery",
+    "uid": "9dkqEhaMz",
+    "version": 13
+  }
