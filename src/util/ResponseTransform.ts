@@ -22,21 +22,35 @@ export function parseIntoObservationFrame(frame: ObservationFrame, response: any
 
 // Transform STA Datastream into frame
 export function parseIntoDatastreamFrame(frame: DatastreamFrame, response: any) {
-  response!.value!.forEach((element: any) => {
-    let phenTimes = element['phenomenonTime'].split('/');
-    frame.appendRow([
-      element['@iot.id'],
-      element['phenomenonTime'],
-      {
-        area: element['observedArea'],
-        toString(): string {
-          return JSON.stringify(this.area, null, 4);
-        },
-      },
-      Date.parse(phenTimes[0]),
-      Date.parse(phenTimes[1]),
-    ]);
-  });
+  if (response!.value !== undefined) {
+    response!.value!.forEach((element: any) => {
+      parseDatastream(frame, element);
+    });
+  } else {
+    parseDatastream(frame, response);
+  }
+}
+
+function parseDatastream(frame: DatastreamFrame, element: any) {
+  // We store phenomenonTimeStart/End to be used as template parameters for DataViewerDashboard
+  var phenTimes: string[];
+  var phenomenonTime: string;
+  if (element['phenomenonTime'] === undefined) {
+    phenTimes = ['0', '0'];
+    phenomenonTime = '0';
+  } else {
+    phenTimes = element['phenomenonTime'].split('/');
+    phenomenonTime = element['phenomenonTime'];
+  }
+  frame.appendRow([
+    'Value Viewer',
+    element['@iot.id'],
+    phenomenonTime,
+    element['observedArea'],
+    Date.parse(phenTimes[0]),
+    Date.parse(phenTimes[1]),
+    element['unitOfMeasurement']['symbol'],
+  ]);
 }
 
 // Transform STA Sensor into frame

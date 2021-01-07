@@ -20,6 +20,10 @@ export class STAService {
     return this.getPaginated(this.url + 'Datastreams', datastreamFrame(), parseIntoDatastreamFrame);
   }
 
+  async getDatastream(id: string): Promise<MutableDataFrame> {
+    return this.getPaginated(this.url + "Datastreams('" + id + "')", datastreamFrame(), parseIntoDatastreamFrame);
+  }
+
   async getSensorByDatastreamId(datastreamId: string): Promise<MutableDataFrame> {
     return this.getPaginated(
       this.url + "Datastreams('" + datastreamId + "')/Sensor",
@@ -39,7 +43,8 @@ export class STAService {
   async getObservationsByDatastreamId(
     datastreamId: string,
     from_date: string,
-    to_date: string
+    to_date: string,
+    unit: string
   ): Promise<MutableDataFrame> {
     return this.getPaginated(
       this.url +
@@ -52,7 +57,7 @@ export class STAService {
         to_date +
         '&$top=10000' +
         '&$orderby=phenomenonTime asc',
-      observationFrame(),
+      observationFrame(unit),
       parseIntoObservationFrame
     );
   }

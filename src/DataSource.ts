@@ -29,7 +29,10 @@ export class DataSource extends DataSourceApi<StaQuery, DataSourceOptions> {
       switch (query.entity!) {
         case staEntity.Observation: {
           console.log('getObservationsByDatastreamId');
-          return this.staService.getObservationsByDatastreamId(dsId, from_date, to_date);
+          // Get original Datastream first to get UoM
+          return this.staService.getDatastream(dsId).then(result => {
+            return this.staService.getObservationsByDatastreamId(dsId, from_date, to_date, result.get(0)['unit']);
+          });
         }
         //case staEntity.FeatureOfInterest: {
         //  console.log('FOI');

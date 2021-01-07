@@ -32,11 +32,13 @@ export interface DatastreamFrame extends MutableDataFrame {}
 export function datastreamFrame(): DatastreamFrame {
   return new MutableDataFrame({
     fields: [
+      { name: 'DataViewerLink', type: FieldType.string },
       { name: 'id', type: FieldType.string },
       { name: 'phenomenonTime', type: FieldType.string },
-      { name: 'observedArea', type: FieldType.other },
+      { name: 'geometry', type: FieldType.other },
       { name: 'minPhenomenonTime', type: FieldType.number },
       { name: 'maxPhenomenonTime', type: FieldType.number },
+      { name: 'unit', type: FieldType.string },
     ],
   });
 }
@@ -76,11 +78,11 @@ export function observedPropertyFrame(): ObservedPropertyFrame {
 }
 
 export interface ObservationFrame extends MutableDataFrame {}
-export function observationFrame(): ObservationFrame {
+export function observationFrame(unit: string): ObservationFrame {
   return new MutableDataFrame({
     fields: [
       { name: 'id', type: FieldType.string },
-      { name: 'value', type: FieldType.number },
+      { name: 'value', type: FieldType.number, config: { unit: unit } },
       { name: 'time', type: FieldType.time },
     ],
   });
