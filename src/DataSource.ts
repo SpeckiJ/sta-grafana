@@ -8,7 +8,7 @@ import {
 
 import { getTemplateSrv } from '@grafana/runtime';
 import { STAService } from 'util/STAService';
-import { StaQuery, DataSourceOptions, staEntity, emptyFrame } from './types';
+import { StaQuery, DataSourceOptions, RequestFunctions, emptyFrame } from './types';
 
 export class DataSource extends DataSourceApi<StaQuery, DataSourceOptions> {
   staService: STAService;
@@ -19,36 +19,47 @@ export class DataSource extends DataSourceApi<StaQuery, DataSourceOptions> {
     this.staService = new STAService(url);
   }
 
+  // Observations?$top=500&$select=result,phenomenonTime&$filter=Datastream/Sensor/id eq 'urn:ogc:object:feature:Sensor:UFZ:737' and properties/projectId eq '41' and (phenomenonTime ge ${__from:date:iso} and phenomenonTime le ${__to:date:iso})
+
   async query(options: DataQueryRequest<StaQuery>): Promise<DataQueryResponse> {
     const from_date = getTemplateSrv().replace('${__from:date:iso}', options.scopedVars);
     const to_date = getTemplateSrv().replace('${__to:date:iso}', options.scopedVars);
-    const dsId = getTemplateSrv().replace('${datastreamId}', options.scopedVars);
 
     const promises = options.targets.map(query => {
+      let arg1 = getTemplateSrv().replace(query.requestArgs[0]);
       // Start multiplexing here
-      switch (query.entity!) {
-        case staEntity.Observation: {
+      switch (query.requestFunction!) {
+        case RequestFunctions.getObservationsByDatastreamId: {
           console.log('getObservationsByDatastreamId');
           // Get original Datastream first to get UoM
-          return this.staService.getDatastream(dsId).then(result => {
-            return this.staService.getObservationsByDatastreamId(dsId, from_date, to_date, result.get(0)['unit']);
+          return this.staService.getDatastream(arg1).then(result => {
+            return this.staService.getObservationsByDatastreamId(arg1, from_date, to_date, result.get(0)['unit']);
           });
+        }
+
+        case RequestFunctions.getObservationsByCustom: {
+          console.log('getObservationsByCustom');
+          // Get original Datastream first to get UoM
+          return this.staService.getObservationsByCustom(arg1);
+          //return this.staService.getDatastream(arg1).then(result => {
+          //  return this.staService.getObservationsByDatastreamId(arg1, from_date, to_date, result.get(0)['unit']);
+          //});
         }
         //case staEntity.FeatureOfInterest: {
         //  console.log('FOI');
         //  return this.staService.getPaginated(this.url + 'FeaturesOfInterest', foiFrame(), this.parseIntoFOIFrame);
         //}
-        case staEntity.Datastream: {
+        case RequestFunctions.getDatastream: {
           console.log('getDatastreams');
           return this.staService.getDatastreams();
         }
-        case staEntity.Sensor: {
+        case RequestFunctions.getSensorByDatastreamId: {
           console.log('getSensorByDatastreamId');
-          return this.staService.getSensorByDatastreamId(dsId);
+          return this.staService.getSensorByDatastreamId(arg1);
         }
-        case staEntity.ObservedProperty: {
+        case RequestFunctions.getObservedPropertyByDatastreamId: {
           console.log('getObservedPropertyByDatastreamId');
-          return this.staService.getObservedPropertyByDatastreamId(dsId);
+          return this.staService.getObservedPropertyByDatastreamId(arg1);
         }
         default: {
           console.log('Default empty');

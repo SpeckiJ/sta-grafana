@@ -32,6 +32,10 @@ export class STAService {
     );
   }
 
+  async getObservationsByCustom(queryString: string): Promise<MutableDataFrame> {
+    return this.getPaginated(this.url + queryString, observationFrame('mV'), parseIntoObservationFrame);
+  }
+
   async getObservedPropertyByDatastreamId(datastreamId: string): Promise<MutableDataFrame> {
     return this.getPaginated(
       this.url + "Datastreams('" + datastreamId + "')/ObservedProperty",

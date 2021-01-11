@@ -1,21 +1,22 @@
 import { DataQuery, DataSourceJsonData, FieldType, MutableDataFrame } from '@grafana/data';
 
-export enum staEntity {
-  'Thing',
-  'Datastream',
-  'FeatureOfInterest',
-  'Sensor',
-  'Platform',
-  'ObservedProperty',
-  'Observation',
+export enum RequestFunctions {
+  'getDatastreams',
+  'getDatastream',
+  'getObservedPropertyByDatastreamId',
+  'getObservationsByDatastreamId',
+  'getSensorByDatastreamId',
+  'getObservationsByCustom',
 }
 
 export interface StaQuery extends DataQuery {
-  entity: staEntity;
-  entityString: string;
+  requestFunction: RequestFunctions;
+  requestArgs: string[];
 }
 
-export const defaultQuery: Partial<StaQuery> = {};
+export const defaultQuery: Partial<StaQuery> = {
+  requestArgs: [],
+};
 
 export interface MyVariableQuery {}
 

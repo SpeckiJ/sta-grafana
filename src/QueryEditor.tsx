@@ -1,40 +1,86 @@
-import defaults from 'lodash/defaults';
-
-import React, { ChangeEvent, PureComponent } from 'react';
-import { LegacyForms } from '@grafana/ui';
-import { QueryEditorProps } from '@grafana/data';
+import React, { PureComponent } from 'react';
+import { Select } from '@grafana/ui';
+import { QueryEditorProps, SelectableValue } from '@grafana/data';
 import { DataSource } from './DataSource';
-import { defaultQuery, DataSourceOptions, StaQuery, staEntity } from './types';
+import { DataSourceOptions, RequestFunctions, StaQuery } from './types';
 
+import { LegacyForms } from '@grafana/ui';
 const { FormField } = LegacyForms;
 
 type Props = QueryEditorProps<DataSource, StaQuery, DataSourceOptions>;
 
-export class QueryEditor extends PureComponent<Props> {
-  onQueryTextChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { onChange, query } = this.props;
-    if ((staEntity as any)[event.target.value] !== undefined) {
-      console.log('registering new entity');
-      query.entity = (staEntity as any)[event.target.value];
-      // onChange({ ...query, entity: (staEntity as any)[event.target.value] });
-    }
-    onChange({ ...query, entityString: event.target.value });
+type State = {
+  method: RequestFunctions;
+};
+
+const queryFunctionsSelectable = [
+  { label: 'getDatastreams', value: RequestFunctions.getDatastreams },
+  { label: 'getDatastream', value: RequestFunctions.getObservationsByDatastreamId },
+  { label: 'getObservedPropertyByDatastreamId', value: RequestFunctions.getObservedPropertyByDatastreamId },
+  { label: 'getObservedPropertyByDatastreamId', value: RequestFunctions.getObservationsByDatastreamId },
+  { label: 'getSensorByDatastreamId', value: RequestFunctions.getSensorByDatastreamId },
+  { label: 'getObservationsByCustom', value: RequestFunctions.getObservationsByCustom },
+];
+
+export class QueryEditor extends PureComponent<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      method: RequestFunctions.getDatastreams,
+    };
+    this.props.query.requestArgs = [];
+  }
+
+  setRequestFunction = (event: SelectableValue) => {
+    const { query } = this.props;
+    query.requestFunction = event.value;
+    this.setState({
+      method: event.value,
+    });
+  };
+
+  onFirstArgChange = (event: any) => {
+    const { query } = this.props;
+    query.requestArgs[0] = event.target.value;
   };
 
   render() {
-    const query = defaults(this.props.query, defaultQuery);
-    const { entityString } = query;
-
     return (
-      <div className="gf-form">
-        <FormField
-          labelWidth={8}
-          value={entityString || ''}
-          onChange={this.onQueryTextChange}
-          label="Query Text"
-          tooltip="Not used yet"
-        />
-      </div>
+      <>
+        <div className="gf-form-inline">
+          <div className="gf-form">
+            <Select
+              prefix="Query Function"
+              options={queryFunctionsSelectable}
+              defaultValue={queryFunctionsSelectable[0]}
+              onChange={v => {
+                this.setRequestFunction(v);
+              }}
+            />
+            <></>
+            {this.state.method !== RequestFunctions.getObservationsByCustom && (
+              <FormField
+                width={15}
+                onChange={(v: any) => {
+                  this.onFirstArgChange(v);
+                }}
+                label="Id"
+                type="string"
+              />
+            )}
+            {this.state.method === RequestFunctions.getObservationsByCustom && (
+              <FormField
+                width={15}
+                onChange={(v: any) => {
+                  this.onFirstArgChange(v);
+                }}
+                label="Custom Query"
+                type="string"
+              />
+            )}
+          </div>
+        </div>
+      </>
     );
   }
 }
