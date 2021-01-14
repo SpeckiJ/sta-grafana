@@ -1,227 +1,239 @@
 {
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": "-- Grafana --",
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "type": "dashboard"
-        }
-      ]
-    },
-    "description": "Displays actual Observation Values",
-    "editable": true,
-    "gnetId": null,
-    "graphTooltip": 0,
-    "id": 3,
-    "iteration": 1609955326010,
-    "links": [],
-    "panels": [
+  "annotations": {
+    "list": [
       {
-        "aliasColors": {},
-        "bars": false,
-        "dashLength": 10,
-        "dashes": false,
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "custom": {}
-          },
-          "overrides": []
-        },
-        "fill": 1,
-        "fillGradient": 0,
-        "gridPos": {
-          "h": 10,
-          "w": 24,
-          "x": 0,
-          "y": 0
-        },
-        "hiddenSeries": false,
-        "id": 2,
-        "legend": {
-          "alignAsTable": true,
-          "avg": true,
-          "current": false,
-          "max": true,
-          "min": true,
-          "show": true,
-          "total": false,
-          "values": true
-        },
-        "lines": true,
-        "linewidth": 1,
-        "nullPointMode": "null",
-        "options": {
-          "alertThreshold": true
-        },
-        "percentage": false,
-        "pluginVersion": "7.3.6",
-        "pointradius": 2,
-        "points": false,
-        "renderer": "flot",
-        "seriesOverrides": [],
-        "spaceLength": 10,
-        "stack": false,
-        "steppedLine": false,
-        "targets": [
-          {
-            "entity": 6,
-            "entityString": "Observation",
-            "from": "${__from:date:iso}",
-            "refId": "A"
-          }
-        ],
-        "thresholds": [],
-        "timeFrom": null,
-        "timeRegions": [],
-        "timeShift": null,
-        "title": "Timeseries Data",
-        "tooltip": {
-          "shared": true,
-          "sort": 0,
-          "value_type": "individual"
-        },
-        "type": "graph",
-        "xaxis": {
-          "buckets": null,
-          "mode": "time",
-          "name": null,
-          "show": true,
-          "values": []
-        },
-        "yaxes": [
-          {
-            "format": "short",
-            "label": null,
-            "logBase": 1,
-            "max": null,
-            "min": null,
-            "show": true
-          },
-          {
-            "format": "short",
-            "label": null,
-            "logBase": 1,
-            "max": null,
-            "min": null,
-            "show": true
-          }
-        ],
-        "yaxis": {
-          "align": false,
-          "alignLevel": null
-        }
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "custom": {}
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 11,
-          "w": 12,
-          "x": 0,
-          "y": 10
-        },
-        "id": 4,
-        "options": {
-          "content": "```json\n{{{raw}}}\n```"
-        },
-        "pluginVersion": "7.3.6",
-        "targets": [
-          {
-            "entity": 3,
-            "entityString": "Sensor",
-            "refId": "A"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Sensor",
-        "type": "marcusolsson-dynamictext-panel"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "custom": {}
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 11,
-          "w": 12,
-          "x": 12,
-          "y": 10
-        },
-        "id": 6,
-        "options": {
-          "content": "```json\n{{{raw}}}\n```"
-        },
-        "pluginVersion": "7.3.6",
-        "targets": [
-          {
-            "entity": 5,
-            "entityString": "ObservedProperty",
-            "refId": "A"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "ObservedProperty",
-        "type": "marcusolsson-dynamictext-panel"
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
       }
-    ],
-    "refresh": false,
-    "schemaVersion": 26,
-    "style": "dark",
-    "tags": [
-      "template"
-    ],
-    "templating": {
-      "list": [
+    ]
+  },
+  "description": "Displays actual Observation Values",
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 2,
+  "iteration": 1610622665219,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.6",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
         {
-          "current": {
-            "selected": false,
-            "text": "716130",
-            "value": "716130"
-          },
-          "error": null,
-          "hide": 0,
-          "label": null,
-          "name": "datastreamId",
-          "options": [
-            {
-              "selected": false,
-              "text": "",
-              "value": ""
-            }
+          "entity": 6,
+          "entityString": "Observation",
+          "from": "${__from:date:iso}",
+          "refId": "A",
+          "requestArgs": [
+            "${datastreamId}"
           ],
-          "query": "",
-          "skipUrlSync": false,
-          "type": "constant"
+          "requestFunction": 3
         }
-      ]
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Timeseries Data",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
-    "time": {
-      "from": "2020-08-27T11:28:55.156Z",
-      "to": "2020-09-07T23:01:28.052Z"
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 0,
+        "y": 10
+      },
+      "id": 4,
+      "options": {
+        "content": "```json\n{{{raw}}}\n```"
+      },
+      "pluginVersion": "7.3.6",
+      "targets": [
+        {
+          "entity": 3,
+          "entityString": "Sensor",
+          "refId": "A",
+          "requestArgs": [
+            "${datastreamId}"
+          ],
+          "requestFunction": 4
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Sensor",
+      "type": "marcusolsson-dynamictext-panel"
     },
-    "timepicker": {
-      "refresh_intervals": [
-        "1m",
-        "5m"
-      ]
-    },
-    "timezone": "",
-    "title": "Data Viewer",
-    "uid": "bHemy2aMk",
-    "version": 14
-  }
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 10
+      },
+      "id": 6,
+      "options": {
+        "content": "```json\n{{{raw}}}\n```"
+      },
+      "pluginVersion": "7.3.6",
+      "targets": [
+        {
+          "entity": 5,
+          "entityString": "ObservedProperty",
+          "refId": "A",
+          "requestArgs": [
+            "${datastreamId}"
+          ],
+          "requestFunction": 2
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "ObservedProperty",
+      "type": "marcusolsson-dynamictext-panel"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 26,
+  "style": "dark",
+  "tags": [
+    "template"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "752284 - vessel:littorina:gps_gmr_1228-160664-0011:ship_lat",
+          "value": "752284 - vessel:littorina:gps_gmr_1228-160664-0011:ship_lat"
+        },
+        "error": null,
+        "hide": 0,
+        "label": null,
+        "name": "datastreamId",
+        "options": [
+          {
+            "selected": false,
+            "text": "",
+            "value": ""
+          }
+        ],
+        "query": "",
+        "skipUrlSync": false,
+        "type": "constant"
+      }
+    ]
+  },
+  "time": {
+    "from": "2020-08-30T11:39:53.000Z",
+    "to": "2020-09-04T05:04:58.000Z"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "1m",
+      "5m"
+    ]
+  },
+  "timezone": "",
+  "title": "Data Viewer",
+  "uid": "bHemy2aMk",
+  "version": 4
+}

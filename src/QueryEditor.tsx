@@ -17,7 +17,7 @@ const queryFunctionsSelectable = [
   { label: 'getDatastreams', value: RequestFunctions.getDatastreams },
   { label: 'getDatastream', value: RequestFunctions.getObservationsByDatastreamId },
   { label: 'getObservedPropertyByDatastreamId', value: RequestFunctions.getObservedPropertyByDatastreamId },
-  { label: 'getObservedPropertyByDatastreamId', value: RequestFunctions.getObservationsByDatastreamId },
+  { label: 'getObservationsByDatastreamId', value: RequestFunctions.getObservationsByDatastreamId },
   { label: 'getSensorByDatastreamId', value: RequestFunctions.getSensorByDatastreamId },
   { label: 'getObservationsByCustom', value: RequestFunctions.getObservationsByCustom },
 ];
@@ -25,6 +25,7 @@ const queryFunctionsSelectable = [
 export class QueryEditor extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
+    props.query.requestFunction = RequestFunctions.getDatastreams;
     this.state = {
       method: RequestFunctions.getDatastreams,
     };
@@ -58,16 +59,17 @@ export class QueryEditor extends PureComponent<Props, State> {
               }}
             />
             <></>
-            {this.state.method !== RequestFunctions.getObservationsByCustom && (
-              <FormField
-                width={15}
-                onChange={(v: any) => {
-                  this.onFirstArgChange(v);
-                }}
-                label="Id"
-                type="string"
-              />
-            )}
+            {this.state.method !== RequestFunctions.getObservationsByCustom &&
+              this.state.method !== RequestFunctions.getDatastreams && (
+                <FormField
+                  width={15}
+                  onChange={(v: any) => {
+                    this.onFirstArgChange(v);
+                  }}
+                  label="Id"
+                  type="string"
+                />
+              )}
             {this.state.method === RequestFunctions.getObservationsByCustom && (
               <FormField
                 width={15}

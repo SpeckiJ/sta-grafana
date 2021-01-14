@@ -26,7 +26,10 @@ export class DataSource extends DataSourceApi<StaQuery, DataSourceOptions> {
     const to_date = getTemplateSrv().replace('${__to:date:iso}', options.scopedVars);
 
     const promises = options.targets.map(query => {
-      let arg1 = getTemplateSrv().replace(query.requestArgs[0]);
+      let arg1 = '';
+      if (query.requestArgs?.length > 0) {
+        arg1 = getTemplateSrv().replace(query.requestArgs[0]);
+      }
       // Start multiplexing here
       switch (query.requestFunction!) {
         case RequestFunctions.getObservationsByDatastreamId: {
@@ -49,7 +52,7 @@ export class DataSource extends DataSourceApi<StaQuery, DataSourceOptions> {
         //  console.log('FOI');
         //  return this.staService.getPaginated(this.url + 'FeaturesOfInterest', foiFrame(), this.parseIntoFOIFrame);
         //}
-        case RequestFunctions.getDatastream: {
+        case RequestFunctions.getDatastreams: {
           console.log('getDatastreams');
           return this.staService.getDatastreams();
         }
@@ -63,6 +66,7 @@ export class DataSource extends DataSourceApi<StaQuery, DataSourceOptions> {
         }
         default: {
           console.log('Default empty');
+          console.log(query.requestFunction);
           return new Promise<MutableDataFrame>(resolve => {
             resolve(emptyFrame);
           });

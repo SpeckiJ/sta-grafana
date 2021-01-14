@@ -78,7 +78,9 @@
           "entity": 1,
           "entityString": "Datastream",
           "hide": false,
-          "refId": "A"
+          "refId": "A",
+          "requestArgs": [],
+          "requestFunction": 0
         }
       ],
       "timeFrom": null,
@@ -271,7 +273,9 @@
           "entity": 1,
           "entityString": "Datastream",
           "hide": false,
-          "refId": "A"
+          "refId": "A",
+          "requestArgs": [],
+          "requestFunction": 0
         }
       ],
       "themeOptions": {
@@ -322,5 +326,5 @@
   "timezone": "",
   "title": "Data Discovery",
   "uid": "9dkqEhaMz",
-  "version": 9
+  "version": 3
 }
